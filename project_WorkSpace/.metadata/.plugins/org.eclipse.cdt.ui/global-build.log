@@ -1,0 +1,83 @@
+15:42:28 **** Build of configuration Debug for project Stop_Watch ****
+make all 
+Building file: ../app.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"app.d" -MT"app.o" -c -o "app.o" "../app.c"
+../app.c: In function 'Timer1_CTC_Square_Wave_Init':
+../app.c:21: error: 'TCNT1' undeclared (first use in this function)
+../app.c:21: error: (Each undeclared identifier is reported only once
+../app.c:21: error: for each function it appears in.)
+../app.c:23: error: 'OCR1A' undeclared (first use in this function)
+../app.c:25: error: 'TIMSK' undeclared (first use in this function)
+../app.c:25: error: 'OCIE1A' undeclared (first use in this function)
+../app.c:32: error: 'TCCR1A' undeclared (first use in this function)
+../app.c:32: error: 'FOC1A' undeclared (first use in this function)
+../app.c:38: error: 'TCCR1B' undeclared (first use in this function)
+../app.c:38: error: 'WGM12' undeclared (first use in this function)
+../app.c:38: error: 'CS11' undeclared (first use in this function)
+make: *** [app.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+15:42:48 **** Incremental Build of configuration Debug for project Stop_Watch ****
+make all 
+Building file: ../app.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"app.d" -MT"app.o" -c -o "app.o" "../app.c"
+Finished building: ../app.c
+ 
+Building file: ../gpio.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"gpio.d" -MT"gpio.o" -c -o "gpio.o" "../gpio.c"
+Finished building: ../gpio.c
+ 
+Building target: Stop_Watch.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Stop_Watch.map -mmcu=atmega32 -o "Stop_Watch.elf"  ./app.o ./gpio.o   
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o:(.init9+0x0): undefined reference to `main'
+make: *** [Stop_Watch.elf] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+15:52:45 **** Incremental Build of configuration Debug for project Stop_Watch ****
+make all 
+Building file: ../app.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"app.d" -MT"app.o" -c -o "app.o" "../app.c"
+Finished building: ../app.c
+ 
+Building target: Stop_Watch.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Stop_Watch.map -mmcu=atmega32 -o "Stop_Watch.elf"  ./app.o ./gpio.o   
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o:(.init9+0x0): undefined reference to `main'
+make: *** [Stop_Watch.elf] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+15:56:52 **** Incremental Build of configuration Debug for project Stop_Watch ****
+make all 
+Building file: ../app.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"app.d" -MT"app.o" -c -o "app.o" "../app.c"
+In file included from ../app.c:10:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../app.c
+ 
+Building target: Stop_Watch.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Stop_Watch.map -mmcu=atmega32 -o "Stop_Watch.elf"  ./app.o ./gpio.o   
+Finished building target: Stop_Watch.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Stop_Watch.elf  >"Stop_Watch.lss"
+Finished building: Stop_Watch.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Stop_Watch.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    7226 bytes (22.1% Full)
+(.text + .data + .bootloader)
+
+Data:         13 bytes (0.6% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 

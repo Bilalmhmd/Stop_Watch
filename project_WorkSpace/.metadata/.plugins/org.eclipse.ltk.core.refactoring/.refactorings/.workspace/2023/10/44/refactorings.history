@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 4 resources" deleteContents="false" description="Delete 4 resources" element1="/Stop_Watch/common_macros.h" element2="/Stop_Watch/gpio.c" element3="/Stop_Watch/gpio.h" element4="/Stop_Watch/std_types.h" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="4" stamp="1698674220611"/>
+</session>

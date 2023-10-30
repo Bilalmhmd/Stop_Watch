@@ -1,0 +1,60 @@
+/***************************************************************
+ *Description : Stop Watch System Project
+ *  Created on: Oct 30, 2023
+ *      Author: Bilal Mohamed
+ ***************************************************************/
+
+
+#include "gpio.h"
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
+/* global variable contain the ticks count of the timer */
+unsigned char g_tick = 0;
+
+// flag will be set when the timer count 1 second
+unsigned char count_second_flag = 0;
+
+// variables to hold the clock time
+unsigned char seconds_count = 0;
+unsigned char minutes_count = 0;
+unsigned char hours_count = 0;
+
+
+// Interrupt Service Routine for timer1 compare mode channel A
+ISR(TIMER1_COMPA_vect)
+{
+	count_second_flag = 1;
+}
+
+
+
+/*
+ * For System clock=8Mhz and prescale F_CPU/8.
+ * Timer frequency will be around 1Mhz, Ttimer = 1us
+ * So we just need 500 counts to get 500us period.
+ * In case we need 25% duty cycle we need to make the timer count 500 counts
+ * with 125 counts the value of the PC0 pin is high and 375 counts with low value.
+ * Compare interrupt will be generated every 125ms or 375ms to toggle PC0 value.
+ */
+void Timer1_Init_CTC_Mode(unsigned short tick)
+{
+	TCNT1 = 0;		/* Set timer1 initial count to zero */
+
+	OCR1A = tick;    /* Set the Compare value to 125 ((125/500) * 100 = 25%) */
+
+	TIMSK |= (1<<OCIE1A); /* Enable Timer1 Compare A Interrupt */
+
+	/* Configure timer control register TCCR1A
+	 * 1. Disconnect OC1A and OC1B  COM1A1=0 COM1A0=0 COM1B0=0 COM1B1=0
+	 * 2. FOC1A=1 FOC1B=1
+	 * 3. CTC Mode WGM10=0 WGM11=0 (Mode Number 4)
+	 */
+	TCCR1A = (1<<FOC1A) | (1<<FOC1B);
+
+	/* Configure timer control register TCCR1B
+	 * 1. CTC Mode WGM12=1 WGM13=0 (Mode Number 4)
+	 * 2. Prescaler = F_CPU/8 CS10=0 CS11=1 CS12=0
+	 */
+	TCCR1B = (1<<WGM12) | (1<<CS11);
+}
